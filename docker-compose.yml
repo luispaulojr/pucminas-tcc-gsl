@@ -1,0 +1,77 @@
+version: "3.8"
+
+volumes:
+  postgres_data: null
+  rabbitmq_data: null
+  appDB:
+
+networks:
+  postgresNET:
+  appNET:
+  rabbitmqNET:
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    networks:
+      - postgresNET
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_ROOT_HOST=%
+      - bind-address:0.0.0.0
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    networks:
+      - rabbitmqNET
+    environment:
+      - RABBITMQ_DEFAULT_USER=radmin
+      - RABBITMQ_DEFAULT_PASS=radmin
+    volumes:
+      - rabbitmq_data:/etc/rabbitmq/
+      - rabbitmq_data:/var/lib/rabbitmq/
+      - rabbitmq_data:/var/log/rabbitmq/
+    hostname: rabbitmq
+    labels:
+      NAME: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:15672" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app
+    networks:
+      - postgresNET
+      - rabbitmqNET
+      - appNET
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      - DBHOST=postgres
+      # - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      # - ASPNETCORE_URLS=https://+:443;http://+:80
+      - HOSTNAMERABBIT=rabbitmq
+    restart: on-failure
+    depends_on:
+      rabbit:
+        condition: service_started
+      postgres:
+        condition: service_started
+    links:
+      - postgres
+      - rabbitmq
