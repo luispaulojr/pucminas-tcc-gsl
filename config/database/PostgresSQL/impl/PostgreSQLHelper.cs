@@ -30,7 +30,8 @@ namespace config.database.PostgresSQL.impl
                Password = config.password,
                SearchPath = config.schema,
                SslMode = SslMode.Prefer,
-               TrustServerCertificate = true
+               TrustServerCertificate = true,
+               Timezone = "America/Sao_Paulo"
            };
         }
 
