@@ -54,6 +54,16 @@ pass: radmin
 http://localhost/
 ```
 
+- Para acessar o Kong:
+```
+http://localhost:8001/
+```
+
+- Para acessar o Konga:
+```
+http://localhost:1337/
+```
+
 - Para rodar os testes:
 ```
 
