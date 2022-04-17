@@ -3,10 +3,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 using app.consumer.interfaces;
 using app.ApiConfiguration;
-using app.DI;
+using config.aws;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Amazon.Extensions.NETCore.Setup;
 
 namespace app
 {
@@ -29,7 +30,7 @@ namespace app
 
         public void ConfigureServices(IServiceCollection services)
         {
-
+            // services.AddDefaultAWSOptions(GetAWSOptions());
             services.AddAutoMapper(typeof(Startup));
             services.AddApiConfig(configuration);
             services.ResolveConfigDependencies();
@@ -38,18 +39,16 @@ namespace app
             services.ResolveGatewayDependencies();
             services.AddControllers().AddNewtonsoftJson();
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Title = configuration["AppInformation:name"],
-                    Version = configuration["AppInformation:version"],
-                    Description = configuration["AppInformation:description"]
-                });
-            });
+            // services.AddCloudWatchSerilog(
+            //     #if DEBUG
+            //         configuration.GetValue<string>("AWS:AccessKey"), configuration.GetValue<string>("AWS:SecretKey"), configuration.GetValue<string>("AWS:LogGroup")
+            //     #else
+            //         configuration.GetValue<string>("AWS:LogGroup")
+            //     #endif
+            // );
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IRegistrationInformationConsumer consumer)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IRegistrationInformationConsumer consumer, IApiVersionDescriptionProvider provider)
         {
             if (env.IsDevelopment())
             {
@@ -63,15 +62,22 @@ namespace app
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "app v1"));
 
+            app.UseSwaggerUI(options =>
+            {
+                foreach (var description in provider.ApiVersionDescriptions)
+                {
+                    options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
+                }
+            });
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => endpoints.MapControllers());
         }
+
+        private AWSOptions GetAWSOptions() => this.configuration.GetAWSOptions();
     }
 }

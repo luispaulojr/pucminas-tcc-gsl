@@ -19,7 +19,7 @@ namespace config.broker.RabbitMQ.impl
             this.connection = this.rabbitMQConnection.Connection(connectionName);
         }
 
-        void IReceiver.Receiver(string queueName, Action<string> func, bool isDurable)
+        public void Receive(string queueName, Action<string> func, bool isDurable)
         {
             var channel = this.rabbitMQConnection.QueueDeclare(connection, queueName, isDurable);
             var consumer = new EventingBasicConsumer(channel);

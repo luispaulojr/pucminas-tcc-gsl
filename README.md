@@ -23,7 +23,12 @@ docker-compose up -d
 
 - Para rodar os comandos de dentro da VM:
 ```
-docker-compose exec web bash
+# acessar o bash da aplicação:
+docker-compose exec app bash
+# acessar o bash do RabbitMQ:
+docker-compose exec rabbitmq bash
+# acessar o bash do PostgreSQL:
+docker-compose exec postgres bash
 ```
 
 - Para rodar as migrations:
@@ -37,9 +42,16 @@ docker-compose exec web bash
 
 ```
 
-- Para acessar o RabbitMQ:
+- Para acessar a console do RabbitMQ:
 ```
 http://localhost:15672/
+user: radmin
+pass: radmin
+```
+
+- Para acessar o Swagger:
+```
+http://localhost/
 ```
 
 - Para rodar os testes:

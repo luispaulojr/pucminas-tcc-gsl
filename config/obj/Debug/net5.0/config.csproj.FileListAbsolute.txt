@@ -1,0 +1,12 @@
+C:\dotnet-projects\pucminas-tcc-gsl\config\bin\Debug\net5.0\config.deps.json
+C:\dotnet-projects\pucminas-tcc-gsl\config\bin\Debug\net5.0\config.dll
+C:\dotnet-projects\pucminas-tcc-gsl\config\bin\Debug\net5.0\ref\config.dll
+C:\dotnet-projects\pucminas-tcc-gsl\config\bin\Debug\net5.0\config.pdb
+C:\dotnet-projects\pucminas-tcc-gsl\config\obj\Debug\net5.0\config.csproj.AssemblyReference.cache
+C:\dotnet-projects\pucminas-tcc-gsl\config\obj\Debug\net5.0\config.GeneratedMSBuildEditorConfig.editorconfig
+C:\dotnet-projects\pucminas-tcc-gsl\config\obj\Debug\net5.0\config.AssemblyInfoInputs.cache
+C:\dotnet-projects\pucminas-tcc-gsl\config\obj\Debug\net5.0\config.AssemblyInfo.cs
+C:\dotnet-projects\pucminas-tcc-gsl\config\obj\Debug\net5.0\config.csproj.CoreCompileInputs.cache
+C:\dotnet-projects\pucminas-tcc-gsl\config\obj\Debug\net5.0\config.dll
+C:\dotnet-projects\pucminas-tcc-gsl\config\obj\Debug\net5.0\ref\config.dll
+C:\dotnet-projects\pucminas-tcc-gsl\config\obj\Debug\net5.0\config.pdb

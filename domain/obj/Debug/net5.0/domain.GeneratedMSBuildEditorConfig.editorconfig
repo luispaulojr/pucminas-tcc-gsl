@@ -7,4 +7,4 @@ build_property.InvariantGlobalization =
 build_property.PlatformNeutralAssembly = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = domain
-build_property.ProjectDir = pucminas-tcc-gsl
+build_property.ProjectDir = C:\dotnet-projects\pucminas-tcc-gsl\domain\

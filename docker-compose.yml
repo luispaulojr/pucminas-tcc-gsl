@@ -3,7 +3,6 @@ version: "3.8"
 volumes:
   postgres_data: null
   rabbitmq_data: null
-  appDB:
 
 networks:
   postgresNET:

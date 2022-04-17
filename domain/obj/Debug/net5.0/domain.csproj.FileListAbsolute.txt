@@ -1,0 +1,15 @@
+C:\dotnet-projects\pucminas-tcc-gsl\domain\bin\Debug\net5.0\domain.deps.json
+C:\dotnet-projects\pucminas-tcc-gsl\domain\bin\Debug\net5.0\domain.dll
+C:\dotnet-projects\pucminas-tcc-gsl\domain\bin\Debug\net5.0\ref\domain.dll
+C:\dotnet-projects\pucminas-tcc-gsl\domain\bin\Debug\net5.0\domain.pdb
+C:\dotnet-projects\pucminas-tcc-gsl\domain\bin\Debug\net5.0\config.dll
+C:\dotnet-projects\pucminas-tcc-gsl\domain\bin\Debug\net5.0\config.pdb
+C:\dotnet-projects\pucminas-tcc-gsl\domain\obj\Debug\net5.0\domain.csproj.AssemblyReference.cache
+C:\dotnet-projects\pucminas-tcc-gsl\domain\obj\Debug\net5.0\domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\dotnet-projects\pucminas-tcc-gsl\domain\obj\Debug\net5.0\domain.AssemblyInfoInputs.cache
+C:\dotnet-projects\pucminas-tcc-gsl\domain\obj\Debug\net5.0\domain.AssemblyInfo.cs
+C:\dotnet-projects\pucminas-tcc-gsl\domain\obj\Debug\net5.0\domain.csproj.CoreCompileInputs.cache
+C:\dotnet-projects\pucminas-tcc-gsl\domain\obj\Debug\net5.0\domain.csproj.CopyComplete
+C:\dotnet-projects\pucminas-tcc-gsl\domain\obj\Debug\net5.0\domain.dll
+C:\dotnet-projects\pucminas-tcc-gsl\domain\obj\Debug\net5.0\ref\domain.dll
+C:\dotnet-projects\pucminas-tcc-gsl\domain\obj\Debug\net5.0\domain.pdb

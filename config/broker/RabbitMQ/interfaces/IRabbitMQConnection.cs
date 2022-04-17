@@ -6,6 +6,7 @@ namespace config.broker.RabbitMQ.interfaces
     {
         IConnection Connection(string connectionName);
         (IConnection, IModel) Connection(string connectionName, string queueName, bool isDurable);
+        (IConnection, IModel) ConnectionExchange(string connectionName, string exchangeDeclare, string typeExchange, bool isDurable);
         IModel QueueDeclare(IConnection connection, string queueName, bool isDurable);
         IModel ExchangeDeclare(IConnection connection, string exchangeName, string typeExchange, bool isDurable);
     }

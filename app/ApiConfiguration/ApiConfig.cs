@@ -1,4 +1,5 @@
 using System.Net.Http;
+using app.ApiConfiguration.Swagger.Filters;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -24,6 +25,11 @@ namespace app.ApiConfiguration
                 options.ReportApiVersions = true;
                 options.AssumeDefaultVersionWhenUnspecified = true;
                 options.DefaultApiVersion = new ApiVersion(1, 0);
+            });
+
+            services.AddSwaggerGen(options => {
+                options.OperationFilter<ReApplyOptionalRouteParameterOperationFilter>();
+                options.EnableAnnotations();
             });
 
             services.AddVersionedApiExplorer(options =>

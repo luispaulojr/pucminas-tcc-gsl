@@ -45,6 +45,14 @@ namespace config.broker.RabbitMQ.impl
             return (connection, channel);
         }
 
+        public (IConnection, IModel) ConnectionExchange(string connectionName, string exchangeDeclare, string typeExchange, bool isDurable)
+        {
+            var connection = Connection(connectionName);
+            var channel = ExchangeDeclare(connection, exchangeDeclare, typeExchange, isDurable);
+
+            return (connection, channel);
+        }
+
         public IModel ExchangeDeclare(IConnection connection, string exchangeName, string typeExchange, bool isDurable)
         {
             IModel channel;
@@ -60,7 +68,7 @@ namespace config.broker.RabbitMQ.impl
                     arguments: null
                 );
 
-                Log.Information($"Exchange decalrada. ExchangeName: '{exchangeName}' com o tipo: '{typeExchange}'");
+                Log.Information($"Exchange declarada. ExchangeName: '{exchangeName}' com o tipo: '{typeExchange}'");
             }
             catch (Exception e)
             {
@@ -97,5 +105,7 @@ namespace config.broker.RabbitMQ.impl
 
             return channel;
         }
+       
+        
     }
 }

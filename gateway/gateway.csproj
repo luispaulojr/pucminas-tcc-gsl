@@ -1,18 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <ItemGroup>
-    <ProjectReference Include="..\config\config.csproj" />
-    <ProjectReference Include="..\domain\domain.csproj" />
-  </ItemGroup>
-
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="RestSharp" Version="107.2.1" />
-    <PackageReference Include="System.Data.DataSetExtensions" Version="4.6.0-preview3.19128.7" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\config\config.csproj" />

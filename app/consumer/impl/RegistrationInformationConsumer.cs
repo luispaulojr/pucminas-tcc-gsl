@@ -20,7 +20,7 @@ namespace app.consumer.impl
         public void Init()
         {
             receiver.Connect("pucminas");
-            receiver.Receiver(queueName: configuration["RabbitMQ:pucminas:queues:queueRegistrationInformation"], func: this.exibeMessage, isDurable: true);
+            receiver.Receive(queueName: configuration["RabbitMQ:pucminas:queues:queueRegistrationInformation"], func: this.exibeMessage, isDurable: true);
         }
 
         private void exibeMessage(string message)

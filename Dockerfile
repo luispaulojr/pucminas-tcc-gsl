@@ -12,12 +12,10 @@ RUN dotnet dev-certs https
 RUN dotnet dev-certs https --trust
 RUN dotnet dev-certs https --check --verbose
 
-# Use native linux file polling for better performance
-ENV DOTNET_USE_POLLING_FILE_WATCHER 1
-WORKDIR /app
-
 # final stage/image
 FROM mcr.microsoft.com/dotnet/aspnet:5.0
+# Use native linux file polling for better performance
+ENV DOTNET_USE_POLLING_FILE_WATCHER 1
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
